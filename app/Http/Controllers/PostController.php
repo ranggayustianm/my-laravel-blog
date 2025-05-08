@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Carbon\Carbon;
+use Purifier;
 
 class PostController extends Controller
 {
@@ -73,7 +74,7 @@ class PostController extends Controller
 
         $post = new Post([
             'title' => $request->title,
-            'content' => $request->content,
+            'content' => Purifier::clean($request->content),
             'user_id' => Auth::id()
         ]);
 
@@ -120,7 +121,7 @@ class PostController extends Controller
 
         $post->update([
             'title' => $request->title,
-            'content' => $request->content
+            'content' => Purifier::clean($request->content)
         ]);
 
         return redirect()->route('posts.show', $post)
@@ -136,7 +137,7 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect()->route('posts.show', $post)
+        return redirect()->route('posts.index', $post)
             ->with('success', 'Post deleted successfully');
     }
 

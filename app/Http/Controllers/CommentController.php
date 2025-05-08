@@ -65,7 +65,7 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Post $post, Comment $comment)
     {
         Gate::authorize('update', $comment);
 
@@ -83,7 +83,7 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comment $comment)
+    public function destroy(Post $post, Comment $comment)
     {
         Gate::authorize('delete', $comment);
 

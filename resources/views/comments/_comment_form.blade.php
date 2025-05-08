@@ -6,8 +6,8 @@
     @csrf
     <div class="mb-2">
         <textarea name="content" rows="3" required
-                  class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="{{ isset($parent_id) ? 'Write your reply...' : 'Write your comment...' }}"></textarea>
+                  class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-gray-300 dark:bg-gray-900"
+                  placeholder="{{ isset($parent_id) ? 'Write your reply (max 1000 letters)...' : 'Write your comment (max 1000 letters)...' }}"></textarea>
         @error('content')
             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
         @enderror

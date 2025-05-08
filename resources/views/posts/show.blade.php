@@ -1,16 +1,16 @@
 <x-app-layout>
     <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <!-- Post Content -->
-        <div class="bg-white shadow rounded-lg p-6 mb-8">
+        <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 mb-8">
             <div class="flex justify-between items-start mb-4">
-                <h1 class="text-2xl font-bold text-gray-900">{{ $post->title }}</h1>
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-200">{{ $post->title }}</h1>
                 <div class="text-sm text-gray-500">
                     Posted by {{ $post->user->name }} • {{ $post->created_at->diffForHumans() }}
                 </div>
             </div>
 
-            <div class="prose max-w-none text-gray-700 mb-6">
-                {!! nl2br(e($post->content)) !!}
+            <div class="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-200 mb-6">
+                {!! Purifier::clean($post->content) !!}
             </div>
 
             @auth
@@ -35,8 +35,8 @@
         </div>
 
         <!-- Comments Section -->
-        <div class="bg-white shadow rounded-lg p-6">
-            <h2 class="text-xl font-semibold mb-4">Comments ({{ $post->comments->count() }})</h2>
+        <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+            <h2 class="text-xl font-semibold mb-4 dark:text-gray-200">Comments ({{ $post->comments->count() }})</h2>
 
             <!-- Comment Form -->
             @auth

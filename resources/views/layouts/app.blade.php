@@ -13,6 +13,11 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script>
+            /*to prevent Firefox FOUC, this must be here*/
+            let FF_FOUC_FIX;
+        </script>
+        <x-head.tinymce-config/>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">

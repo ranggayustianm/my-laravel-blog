@@ -14,8 +14,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Public routes
-Route::resource('posts', PostController::class)->only(['index', 'show']);
 Route::get('posts/search', [PostController::class, 'search'])->name('posts.search');
+Route::resource('posts', PostController::class)->only(['index', 'show'])->where(['post' => '[0-9]+']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

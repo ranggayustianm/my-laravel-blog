@@ -3,8 +3,8 @@
         <div class="font-semibold text-gray-800 dark:text-gray-200">
             {{ $comment->user->name }}
         </div>
-        <div class="text-xs text-gray-500">
-            {{ $comment->created_at->diffForHumans() }}
+        <div class="text-xs text-gray-500" title="{{ $comment->created_at->diffForHumans() }}">
+            {{ $comment->created_at }}
         </div>
     </div>
     

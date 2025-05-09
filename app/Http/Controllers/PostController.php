@@ -30,7 +30,7 @@ class PostController extends Controller
             })
             ->when($author, function($query) use ($author) {
                 $query->whereHas('user', function($q) use ($author) {
-                    $q->where('name', 'ilike', "%{$author}%");
+                    $q->whereRaw('lower(name) like ?', ['%'.strtolower($author).'%']);
                 });
             })
             ->when($startDate && $endDate, function($query) use ($startDate, $endDate) {
@@ -137,7 +137,7 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect()->route('posts.index', $post)
+        return redirect()->route('posts.index')
             ->with('success', 'Post deleted successfully');
     }
 

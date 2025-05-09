@@ -1,5 +1,13 @@
 <x-app-layout>
     <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <!-- Post Alert after successful actions -->
+        @if(Session::has('success'))
+            <div class="bg-blue-400 dark:bg-blue-900 shadow border-t border-b text-gray-700 dark:text-gray-200 p-6 mb-8" role="alert">
+                <p class="font-bold">Success</p>
+                <p class="text-sm">{{ Session::get('success') }}</p>
+            </div>
+        @endif
+        
         <!-- Post Content -->
         <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 mb-8">
             <div class="flex justify-between items-start mb-4">

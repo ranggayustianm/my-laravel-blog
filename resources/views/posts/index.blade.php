@@ -14,6 +14,13 @@
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+			<!-- Post alert after successful actions -->
+			@if(Session::has('success'))
+				<div class="bg-blue-400 dark:bg-blue-900 shadow border-t border-b text-gray-700 dark:text-gray-200 p-6 mb-8" role="alert">
+					<p class="font-bold">Success</p>
+					<p class="text-sm">{{ Session::get('success') }}</p>
+				</div>
+			@endif
             <div class="grid grid-cols-3 gap-3">
                 <!-- Sticky Filters Column -->
                 <div class="">
@@ -99,7 +106,7 @@
 								<p class="text-gray-600 dark:text-gray-400 mb-4">{{ Str::limit(strip_tags($post->content), 200) }}</p>
 								<div class="flex justify-between items-center text-sm text-gray-500">
 									<span>Posted by {{ $post->user->name }}</span>
-									<span>{{ $post->created_at->diffForHumans() }}</span>
+									<span title="{{ $post->created_at->diffForHumans() }}">{{ $post->created_at }}</span>
 								</div>
 							</div>
 						</div>
